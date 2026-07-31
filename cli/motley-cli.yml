@@ -1,0 +1,38 @@
+generated: '2026-07-20'
+method: searched
+source: https://docs.motley.ai/slayer/reference/cli/
+name: slayer
+description: >-
+  The `slayer` CLI ships with the motley-slayer package and exposes the SLayer
+  semantic layer from the terminal — manage datasources and models, run semantic
+  queries, launch the MCP server, and run the combined REST + MCP server. Commands
+  do not require a running server (except `serve`).
+install:
+- method: uv
+  command: uv tool install 'motley-slayer[all]'
+- method: uvx
+  command: uvx --from 'motley-slayer[postgres]' slayer <command>
+- method: pip
+  command: pip install motley-slayer
+entrypoint: slayer
+commands:
+- group: datasources
+  examples:
+  - "slayer datasources create 'postgresql://user:${DB_PASSWORD}@hostname/db_name'"
+  - "slayer datasources create demo"
+  note: Password is read at init time, not written to disk nor exposed to the agent.
+- group: query
+  examples:
+  - 'slayer query ''{"source_model": "orders", "measures": ["*:count"], "dimensions": ["status"]}'''
+  - "slayer query @query.json --format json"
+  note: Runs a semantic query directly; does not depend on a running server.
+- group: mcp
+  examples:
+  - slayer mcp
+  - slayer mcp --demo
+  - slayer mcp --ingest-on-startup
+  note: Runs the stdio MCP server (normally launched by the agent via `claude mcp add`).
+- group: serve
+  examples:
+  - slayer serve --ingest-on-startup
+  note: Runs the FastAPI REST server + MCP SSE endpoint (default port 5143).

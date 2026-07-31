@@ -1,0 +1,26 @@
+generated: '2026-07-20'
+method: searched
+source: https://docs.motley.ai/slayer/getting-started/mcp/
+description: >-
+  SLayer ships a zero-config demo dataset (the dbt "Jaffle Shop" sample, generated
+  locally via jafgen + DuckDB) so the MCP server, CLI, and queries work end-to-end
+  after a single install with no external database. This is the provider's published
+  test/sandbox surface; no synthetic test values are invented here.
+demo:
+  name: Jaffle Shop (dbt sample)
+  engine: DuckDB (bundled) + jafgen data generator (core dependencies)
+  zero_config: true
+  setup:
+  - description: Add SLayer with the demo dataset preloaded to Claude Code (stdio MCP).
+    command: claude mcp add slayer_demo -- slayer mcp --demo
+  - description: Create the demo datasource explicitly.
+    command: slayer datasources create demo
+  models: [orders, customers, ...]
+  note: >-
+    `slayer mcp --demo` preloads the Jaffle Shop demo on startup; SQLite and MCP
+    also work out of the box with the base install.
+live_vs_test:
+  note: >-
+    For real data, create a datasource pointing at your own database
+    (`slayer datasources create 'postgresql://user:${DB_PASSWORD}@host/db'`); the
+    password is read at init time, not written to disk nor exposed to the agent.

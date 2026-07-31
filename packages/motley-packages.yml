@@ -1,0 +1,26 @@
+generated: '2026-07-20'
+method: searched
+source: https://pypi.org/project/motley-slayer/
+packages:
+- language: python
+  registry: pypi
+  name: motley-slayer
+  url: https://pypi.org/project/motley-slayer/
+  install: pip install motley-slayer
+  version: 0.9.11
+  official: true
+  description: >-
+    SLayer — a lightweight, agent-first semantic layer for AI agents and humans.
+    Ships the SLayer query engine plus the `slayer` CLI, an embedded MCP server
+    (stdio + SSE), a FastAPI REST server, a Python client, an Apache Arrow Flight
+    SQL facade, and a Postgres facade. Extras: [all], [postgres], [mysql],
+    [clickhouse], [sqlserver], [snowflake], [bigquery], [dbt], [flight],
+    [advanced_search].
+  repository: https://github.com/MotleyAI/slayer
+  license: MIT
+  keywords: [semantic-layer, sql, ai, mcp, data, analytics, bi]
+notes: >-
+  motley-slayer is the only first-party published client library. The
+  MotleyAI/python-sdk repository vendors the third-party `lightdash` client and
+  is not a Motley SDK. `slayer` and `motley` on PyPI are unrelated third-party
+  projects (a QA framework and a code catalog respectively) — not Motley's.

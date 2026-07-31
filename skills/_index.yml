@@ -1,0 +1,31 @@
+generated: '2026-07-20'
+method: searched
+source: https://github.com/MotleyAI/slayer/tree/main/.claude/skills
+description: >-
+  Provider-published Agent Skills for Motley SLayer, captured verbatim from the
+  MotleyAI/slayer repository (.claude/skills). These skills teach an agent how to
+  operate the SLayer semantic layer over MCP: understand the architecture, define
+  models and datasources, and construct and execute semantic queries. Motley also
+  publishes a larger reporting skill pack in the MotleyAI/motley-skills repository
+  (create-report, explore-model, update-chart/table/text/query blocks,
+  frontend-slides) wired to the hosted MCP server at https://app.motley.ai/api/v1/mcp.
+api: mcp/motley-mcp.yml
+skills:
+- file: motley-slayer-overview.md
+  name: SLayer Overview
+  description: Understand SLayer capabilities and architecture (semantic layer for AI agents).
+  operations: [list_datasources, models_summary, inspect]
+- file: motley-slayer-models.md
+  name: Manage SLayer models and datasources
+  description: Create and manage datasources, models, dimensions, and measures.
+  operations: [create_datasource, ingest_datasource_models, create_model, edit_model, delete_model]
+- file: motley-slayer-query.md
+  name: Query with SLayer
+  description: Construct and execute semantic queries (measures, dimensions, filters, time dimensions).
+  operations: [query, query_nested, search]
+related:
+- source: https://github.com/MotleyAI/motley-skills
+  note: >-
+    Motley Cloud reporting skill pack (create-report, explore-model, update-chart,
+    update-table-block, update-text-block, update-query-block, brand-config-authoring,
+    frontend-slides) driven by the hosted MCP server https://app.motley.ai/api/v1/mcp.

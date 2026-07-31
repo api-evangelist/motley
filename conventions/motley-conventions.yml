@@ -1,0 +1,46 @@
+generated: '2026-07-20'
+method: searched
+source: https://docs.motley.ai/slayer/
+description: >-
+  Cross-cutting request/response semantics for the SLayer semantic-layer query
+  interface, which is uniform across MCP tools, the REST API, the CLI, and the
+  Python client — the same SlayerQuery shape works on every surface.
+authentication:
+  cloud: OAuth 2.0 (Clerk) + OIDC on https://app.motley.ai/api/v1/
+  local: SLayer server holds datasource credentials; never exposed to consumers
+  ref: authentication/motley-authentication.yml
+query_model:
+  shape: SlayerQuery (JSON/dict)
+  fields: [source_model, measures, dimensions, filters, time_dimensions, order, limit, offset]
+  description: >-
+    Agents describe measures, dimensions and filters; SLayer compiles and runs
+    the correct SQL across the target dialect (joins, aggregations, time
+    calculations, dialect differences handled by the engine).
+pagination:
+  style: limit-offset
+  params: [limit, offset]
+  note: whole_periods_only snaps date filters to bucket boundaries.
+filtering:
+  style: formula-strings
+  operators: ['=', '<>', '>', '>=', '<', '<=', IN, 'IS NULL', 'IS NOT NULL', LIKE, 'NOT LIKE']
+  boolean: [AND, OR, NOT]
+  note: Filters on measures are auto-routed to HAVING.
+output_formats: [markdown, json, csv]
+debugging:
+  show_sql: Return the generated SQL in the response.
+  dry_run: Generate/return SQL without executing.
+  explain: Run EXPLAIN ANALYZE and return the query plan.
+security:
+  row_level_security: true
+  rls_note: Per-user row-level security so each caller sees only permitted rows (Motley Cloud + SLayer Python API).
+idempotency:
+  supported: false
+  note: >-
+    No idempotency-key contract is documented; the semantic query surface is
+    read-oriented (query/query_nested) and model/datasource mutations are
+    explicit named operations rather than retry-keyed writes.
+cross_links:
+  authentication: authentication/motley-authentication.yml
+  scopes: scopes/motley-scopes.yml
+  changelog: changelog/motley-changelog.yml
+  mcp: mcp/motley-mcp.yml

@@ -1,0 +1,39 @@
+generated: '2026-07-20'
+method: derived
+source: >-
+  well-known/motley-oauth-authorization-server.json, mcp/motley-mcp.yml,
+  packages/motley-packages.yml (motley-slayer)
+description: >-
+  Cross-cutting standards SLayer / Motley Cloud conform to, derived from the
+  published OAuth server metadata, the MCP server, and the SLayer package
+  interfaces. No formal security-compliance certifications (SOC 2 / ISO 27001 /
+  etc.) are published, so no Compliance pointer is emitted.
+standards:
+- id: oauth2
+  conforms: true
+  evidence: RFC 8414 authorization server metadata published at /.well-known/oauth-authorization-server
+- id: oauth2-pkce
+  conforms: true
+  evidence: code_challenge_methods_supported = [S256]
+- id: oidc
+  conforms: true
+  evidence: openid scope + id_token (RS256) + OIDC claims (sub/iss/aud/email/name/org_id)
+- id: rfc8414-oauth-as-metadata
+  conforms: true
+  evidence: valid /.well-known/oauth-authorization-server document
+- id: oauth2-dynamic-client-registration
+  conforms: true
+  evidence: registration_endpoint https://app.motley.ai/api/v1/oauth/register
+- id: mcp
+  conforms: true
+  evidence: SLayer ships an MCP server (stdio + SSE) and a hosted HTTP MCP endpoint
+- id: arrow-flight-sql
+  conforms: true
+  evidence: SLayer exposes an Apache Arrow Flight SQL (JDBC/BI-compatible) facade
+- id: postgres-wire
+  conforms: true
+  evidence: SLayer exposes a Postgres facade for BI-tool Postgres connectors
+- id: rfc9457-problem-details
+  conforms: false
+- id: fhir-r4
+  conforms: false

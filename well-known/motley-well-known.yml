@@ -1,0 +1,32 @@
+generated: '2026-07-20'
+method: searched
+host: https://app.motley.ai
+description: >-
+  Well-known discovery surface probed on the Motley hosts (motley.ai,
+  app.motley.ai, docs.motley.ai). Only app.motley.ai serves a real document: a
+  valid RFC 8414 OAuth 2.0 Authorization Server Metadata file (Clerk-backed). The
+  /.well-known/security.txt and /.well-known/api-catalog paths return HTTP 200
+  but serve the app's SPA HTML shell (catch-all), not real documents, so they are
+  not saved.
+documents:
+- path: /.well-known/oauth-authorization-server
+  status: 200
+  file: motley-oauth-authorization-server.json
+  spec: RFC 8414 OAuth 2.0 Authorization Server Metadata
+- path: /.well-known/security.txt
+  status: 200
+  file: null
+  note: Returns SPA HTML shell, not a valid RFC 9116 security.txt.
+- path: /.well-known/api-catalog
+  status: 200
+  file: null
+  note: Returns SPA HTML shell, not a valid RFC 9727 API catalog.
+- path: /.well-known/openid-configuration
+  status: 404
+- path: /.well-known/ai-plugin.json
+  status: 404
+other_hosts:
+- host: https://motley.ai
+  result: all probed /.well-known/* paths returned 404
+- host: https://docs.motley.ai
+  result: all probed /.well-known/* paths returned 404

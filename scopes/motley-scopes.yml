@@ -1,0 +1,33 @@
+generated: '2026-07-20'
+method: searched
+source: https://app.motley.ai/.well-known/oauth-authorization-server
+docs: https://clerk.com/docs/oauth/scoped-access
+description: >-
+  Motley Cloud exposes an OAuth 2.0 authorization server (RFC 8414 metadata,
+  backed by Clerk) at issuer https://app.motley.ai. Scopes are advertised in the
+  server metadata's scopes_supported. Authorization code flow with PKCE (S256);
+  dynamic client registration is supported.
+issuer: https://app.motley.ai
+schemes:
+- name: OAuth2
+  source: well-known/motley-oauth-authorization-server.json
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://clerk.motley.ai/oauth/authorize
+    tokenUrl: https://clerk.motley.ai/oauth/token
+    pkce: S256
+scopes:
+- scope: openid
+  description: OpenID Connect authentication (issue an ID token).
+- scope: profile
+  description: Access the user's basic profile claims (name).
+- scope: email
+  description: Access the user's email address.
+- scope: public_metadata
+  description: Read the user's public metadata.
+- scope: private_metadata
+  description: Read the user's private metadata.
+- scope: offline_access
+  description: Issue a refresh token for long-lived, offline access.
+- scope: "user:org:read"
+  description: Read the user's organization membership/context.

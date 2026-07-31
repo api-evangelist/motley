@@ -1,7 +1,31 @@
 aid: motley
 name: Motley
-description: Motley is a company surfaced as a portfolio company of seedcamp and added to the API Evangelist
-  network as a stub for enrichment. This profile is a lead awaiting the enrichment pipeline.
+description: >-
+  Motley is a Zurich-based company building a governed semantic layer for AI
+  agents and business intelligence. Its open-core product, SLayer
+  (motley-slayer), is a lightweight, agent-first semantic layer and query
+  engine: teams model measures, dimensions, and filters once, and SLayer
+  generates and executes correct SQL across Postgres, MySQL, Snowflake,
+  BigQuery, ClickHouse, DuckDB and more — exposed over MCP, a REST API, a CLI, a
+  Python client, Apache Arrow Flight SQL, and a Postgres facade for BI tools.
+  Motley Cloud adds the managed production layer on top: hosting, OAuth-based
+  access control, row-level security, versioning, and a governed reporting
+  engine that turns agent queries into reports, charts, documents, and
+  presentations. Founded by Egor Kraev (ex-Head of AI at Wise), Artemy
+  Belousov, and Yann Ranchere; backed by Seedcamp.
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://raw.githubusercontent.com/MotleyAI/slayer/main/docs/images/slayer-hero.png
 url: https://raw.githubusercontent.com/api-evangelist/motley/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
@@ -11,10 +35,50 @@ x-tier: stub
 x-tier-reason: portfolio-lead
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-20'
+x-enrichment:
+  date: '2026-07-20'
+  status: enriched
+  artifacts_added: 17
+  pass: local-v1
 tags:
 - Company
-apis: []
+- Semantic Layer
+- Business Intelligence
+- Analytics
+- AI Agents
+- MCP
+- SQL
+- Data
+- Reporting
+apis:
+- name: Motley SLayer Semantic Layer
+  description: >-
+    SLayer is Motley's open-core, agent-first semantic layer and query engine.
+    Agents and applications describe measures, dimensions, and filters and
+    SLayer compiles and runs the correct SQL across many databases, exposed over
+    MCP, REST, CLI, a Python client, Apache Arrow Flight SQL, and a Postgres
+    facade. Motley Cloud is the managed, governed, OAuth-secured hosted layer.
+  humanURL: https://docs.motley.ai/slayer/
+  baseURL: https://app.motley.ai/api/v1/
+  tags:
+  - Semantic Layer
+  - Analytics
+  - MCP
+  - SQL
+  properties:
+  - type: Documentation
+    url: https://docs.motley.ai/slayer/
+  - type: GettingStarted
+    url: https://docs.motley.ai/slayer/getting-started/
+  - type: APIReference
+    url: https://docs.motley.ai/slayer/getting-started/rest-api
+  - type: SourceCode
+    url: https://github.com/MotleyAI/slayer
+  - type: MCPServer
+    url: mcp/motley-mcp.yml
+  - type: CLI
+    url: cli/motley-cli.yml
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
@@ -22,4 +86,58 @@ maintainers:
   email: info@apis.io
 common:
 - type: Website
-  url: http://motley.ai
+  url: https://motley.ai
+- type: DeveloperPortal
+  url: https://docs.motley.ai/
+- type: Documentation
+  url: https://docs.motley.ai/
+- type: APIReference
+  url: https://docs.motley.ai/slayer/reference/
+- type: GettingStarted
+  url: https://docs.motley.ai/slayer/getting-started/
+- type: Blog
+  url: https://motley.ai/blog
+- type: Pricing
+  url: https://motley.ai/pricing
+- type: SignUp
+  url: https://app.motley.ai
+- type: TermsOfService
+  url: https://motley.ai/legal/terms-of-service
+- type: PrivacyPolicy
+  url: https://motley.ai/legal/privacy-policy
+- type: GitHubOrganization
+  url: https://github.com/MotleyAI
+- type: Support
+  url: https://discord.gg/egWxMctHCA
+- type: LinkedIn
+  url: https://www.linkedin.com/company/usemotley/
+- type: SourceCode
+  url: https://github.com/MotleyAI/slayer
+- type: Packages
+  url: packages/motley-packages.yml
+- type: SDKs
+  url: packages/motley-packages.yml
+- type: MCPServer
+  url: mcp/motley-mcp.yml
+- type: AgentSkill
+  url: skills/_index.yml
+- type: CLI
+  url: cli/motley-cli.yml
+- type: ChangeLog
+  url: changelog/motley-changelog.yml
+- type: Authentication
+  url: authentication/motley-authentication.yml
+- type: OAuthScopes
+  url: scopes/motley-scopes.yml
+- type: WellKnown
+  url: well-known/motley-well-known.yml
+- type: Conventions
+  url: conventions/motley-conventions.yml
+- type: Conformance
+  url: conformance/motley-conformance.yml
+- type: Sandbox
+  url: sandbox/motley-sandbox.yml
+- type: LLMsTxt
+  url: llms/motley-llms.txt
+- type: DomainSecurity
+  url: security/motley-domain-security.yml

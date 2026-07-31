@@ -1,0 +1,46 @@
+generated: '2026-07-20'
+method: searched
+source: https://github.com/MotleyAI/slayer/releases
+description: >-
+  Release history for the open-core motley-slayer (SLayer) package, published as
+  dated GitHub Releases with SemVer tags. Recent window only; the GitHub releases
+  page is the source of truth.
+scheme: semver
+current_version: 0.9.11
+entries:
+- version: 0.9.11
+  date: '2026-07-20'
+- version: 0.9.10
+  date: '2026-07-19'
+  highlights: Fix special character handling in database connection strings.
+- version: 0.9.9
+  date: '2026-07-17'
+  highlights: Bug fixes and performance improvements.
+- version: 0.9.8
+  date: '2026-07-15'
+  highlights: OSI config import.
+- version: 0.9.7
+  date: '2026-07-13'
+  highlights: Query caching.
+- version: 0.9.5
+  date: '2026-07-07'
+  highlights: More flexible row-level security, better MCP guidance, query engine tidy-up.
+- version: 0.9.4
+  date: '2026-07-07'
+  highlights: Bugfix for mixed-case columns and better psql support.
+- version: 0.9.3
+  date: '2026-07-02'
+  highlights: Allow a root_hint to suggest_root_model.
+- version: 0.9.2
+  date: '2026-07-02'
+  highlights: Improvements to Postgres facade and MetricFlow import.
+- version: 0.9.0
+  date: '2026-06-26'
+  breaking: false
+  highlights: Row-Level Security in the SLayer Python API.
+- version: 0.8.0
+  date: '2026-06-19'
+  highlights: Postgres facade for driving BI tools.
+- version: 0.7.4
+  date: '2026-06-14'
+  highlights: First-class support for Snowflake and BigQuery.

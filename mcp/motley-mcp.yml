@@ -1,0 +1,62 @@
+generated: '2026-07-20'
+method: searched
+status: published
+source: https://docs.motley.ai/slayer/reference/mcp/
+description: >-
+  SLayer runs as a Model Context Protocol (MCP) server so AI agents (Claude,
+  Cursor, etc.) can discover and query data conversationally. It exposes the same
+  tools across two transports.
+servers:
+- name: motley-cloud
+  transport: http
+  url: https://app.motley.ai/api/v1/mcp
+  hosted: true
+  auth: OAuth2 (Clerk) — see authentication/motley-authentication.yml
+  source: https://github.com/MotleyAI/motley-skills/blob/main/.mcp.json
+- name: slayer-stdio
+  transport: stdio
+  install: uvx --from 'motley-slayer[postgres]' slayer mcp --ingest-on-startup
+  hosted: false
+  note: >-
+    Agent spawns SLayer as a subprocess; credentials are never exposed to the
+    agent. `claude mcp add slayer -- slayer mcp`.
+- name: slayer-sse
+  transport: sse
+  url: http://localhost:5143/mcp/sse
+  hosted: false
+  note: Served by `slayer serve` alongside the REST API on the same port.
+tools:
+- name: create_datasource
+  description: Create a DB connection, test it, and auto-ingest models.
+- name: list_datasources
+  description: List configured datasources (no credentials shown).
+- name: describe_datasource
+  description: Show details, test connection, list schemas/tables.
+- name: edit_datasource
+  description: Edit an existing datasource config.
+- name: delete_datasource
+  description: Remove a datasource config.
+- name: ingest_datasource_models
+  description: Auto-generate models from DB schema with rollup joins.
+- name: models_summary
+  description: Brief summary of all non-hidden models in a datasource.
+- name: inspect
+  description: Single-entity point lookup (datasource/model/column/measure/aggregation/memory); supports batch and collection views.
+- name: inspect_model
+  description: (Deprecated — use inspect) Complete view of a single model.
+- name: create_model
+  description: Create a model from a table/SQL definition or from a query.
+- name: edit_model
+  description: Edit an existing model (upsert columns, measures, aggregations, joins).
+- name: delete_model
+  description: Delete a model entirely.
+- name: query
+  description: Execute a semantic query (measures, dimensions, filters, time_dimensions).
+- name: query_nested
+  description: Execute a multi-stage DAG of named sub-queries.
+- name: search
+  description: Three-channel RRF-fused retrieval over memories and canonical entities.
+- name: save_memory
+  description: Persist a free-form learning tagged with canonical entities or a query.
+- name: forget_memory
+  description: Delete a memory by id (cascade-strips references).
