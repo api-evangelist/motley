@@ -85,6 +85,15 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: IssueTracker
+  url: https://github.com/MotleyAI/slayer/issues
+- type: Releases
+  url: https://github.com/MotleyAI/slayer/releases
+- type: ContributionGuide
+  url: https://github.com/MotleyAI/slayer/blob/main/CONTRIBUTING.md
+- type: License
+  name: MIT
+  url: https://github.com/MotleyAI/slayer/blob/main/LICENSE
 - type: Website
   url: https://motley.ai
 - type: DeveloperPortal
