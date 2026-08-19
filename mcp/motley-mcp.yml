@@ -2,10 +2,8 @@ generated: '2026-07-20'
 method: searched
 status: published
 source: https://docs.motley.ai/slayer/reference/mcp/
-description: >-
-  SLayer runs as a Model Context Protocol (MCP) server so AI agents (Claude,
-  Cursor, etc.) can discover and query data conversationally. It exposes the same
-  tools across two transports.
+description: SLayer runs as a Model Context Protocol (MCP) server so AI agents (Claude, Cursor, etc.)
+  can discover and query data conversationally. It exposes the same tools across two transports.
 servers:
 - name: motley-cloud
   transport: http
@@ -17,9 +15,8 @@ servers:
   transport: stdio
   install: uvx --from 'motley-slayer[postgres]' slayer mcp --ingest-on-startup
   hosted: false
-  note: >-
-    Agent spawns SLayer as a subprocess; credentials are never exposed to the
-    agent. `claude mcp add slayer -- slayer mcp`.
+  note: Agent spawns SLayer as a subprocess; credentials are never exposed to the agent. `claude mcp add
+    slayer -- slayer mcp`.
 - name: slayer-sse
   transport: sse
   url: http://localhost:5143/mcp/sse
@@ -41,7 +38,8 @@ tools:
 - name: models_summary
   description: Brief summary of all non-hidden models in a datasource.
 - name: inspect
-  description: Single-entity point lookup (datasource/model/column/measure/aggregation/memory); supports batch and collection views.
+  description: Single-entity point lookup (datasource/model/column/measure/aggregation/memory); supports
+    batch and collection views.
 - name: inspect_model
   description: (Deprecated — use inspect) Complete view of a single model.
 - name: create_model
@@ -60,3 +58,10 @@ tools:
   description: Persist a free-form learning tagged with canonical entities or a query.
 - name: forget_memory
   description: Delete a memory by id (cascade-strips references).
+deployment:
+  mode: remote
+  endpoint: https://app.motley.ai/api/v1/mcp
+  verified: probed
+  probe: gated
+  checked: '2026-08-12'
+  source: catalog MCP census
