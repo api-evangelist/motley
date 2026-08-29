@@ -13,6 +13,19 @@ description: >-
   engine that turns agent queries into reports, charts, documents, and
   presentations. Founded by Egor Kraev (ex-Head of AI at Wise), Artemy
   Belousov, and Yann Ranchere; backed by Seedcamp.
+deliveryModel:
+  model: open-core
+  license: MIT
+  open_source: true
+  commercial: true
+  callable_host: false
+  label: Open core · an OSS project plus a commercial hosted product
+  confidence: high
+  source:
+  - license
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: unknown
   onboarding: self-serve
