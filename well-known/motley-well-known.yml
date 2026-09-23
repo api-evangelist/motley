@@ -1,32 +1,33 @@
-generated: '2026-07-20'
-method: searched
-host: https://app.motley.ai
-description: >-
-  Well-known discovery surface probed on the Motley hosts (motley.ai,
-  app.motley.ai, docs.motley.ai). Only app.motley.ai serves a real document: a
-  valid RFC 8414 OAuth 2.0 Authorization Server Metadata file (Clerk-backed). The
-  /.well-known/security.txt and /.well-known/api-catalog paths return HTTP 200
-  but serve the app's SPA HTML shell (catch-all), not real documents, so they are
-  not saved.
-documents:
-- path: /.well-known/oauth-authorization-server
-  status: 200
-  file: motley-oauth-authorization-server.json
-  spec: RFC 8414 OAuth 2.0 Authorization Server Metadata
-- path: /.well-known/security.txt
-  status: 200
-  file: null
-  note: Returns SPA HTML shell, not a valid RFC 9116 security.txt.
-- path: /.well-known/api-catalog
-  status: 200
-  file: null
-  note: Returns SPA HTML shell, not a valid RFC 9727 API catalog.
-- path: /.well-known/openid-configuration
-  status: 404
-- path: /.well-known/ai-plugin.json
-  status: 404
-other_hosts:
-- host: https://motley.ai
-  result: all probed /.well-known/* paths returned 404
-- host: https://docs.motley.ai
-  result: all probed /.well-known/* paths returned 404
+generated: '2026-09-19'
+method: probed
+hosts:
+- host: https://app.motley.ai
+  documents:
+  - path: /.well-known/oauth-protected-resource
+    status: 200
+    file: motley-app-oauth-protected-resource.json
+    bytes: 202
+  path_echo_control: passed
+- host: https://clerk.motley.ai
+  documents:
+  - path: /.well-known/oauth-authorization-server
+    status: 200
+    file: motley-clerk-oauth-authorization-server.json
+    bytes: 1203
+  path_echo_control: passed
+x-mcp-probe:
+  probed: '2026-09-19'
+  issue: roadmap#321, roadmap#337
+  documents:
+  - host: https://app.motley.ai
+    path: /.well-known/oauth-protected-resource
+    file: motley-app-oauth-protected-resource.json
+  - host: https://clerk.motley.ai
+    path: /.well-known/oauth-authorization-server
+    file: motley-clerk-oauth-authorization-server.json
+  validated_on: resource (RFC 9728) / issuer (RFC 8414, OIDC)
+  negative_control: one per host; a 2xx JSON object at an impossible path discards the host
+note: 'MCP-host OAuth discovery added 2026-09-19 (roadmap#321/#337): the harvest visits a provider''s
+  primary hosts, and RFC 9728 protected-resource metadata lives on the MCP host, so these documents existed
+  and were invisible to the scorer. Fetched live and validated on `resource`/`issuer`; one negative control
+  per host.'

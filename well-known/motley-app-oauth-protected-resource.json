@@ -1,0 +1,1 @@
+{"resource":"https://app.motley.ai/api/v1/mcp","bearer_methods_supported":["header"],"scopes_supported":["openid","profile","email","offline_access"],"authorization_servers":["https://clerk.motley.ai"]}
